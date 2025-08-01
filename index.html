@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Numerikraft Business Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      display: flex;  
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .business-card {
+      width: 670px;
+      max-width: 95vw;
+      aspect-ratio: 22 / 10;
+      background: white;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+    
+    .card-content {
+      height: calc(100% - 18px);
+      display: flex;
+      padding: 30px 38px;
+    }
+    
+    .left-section {
+      flex: 1.2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .name-title-section {
+      margin-bottom: 18px;
+    }
+    
+    .name {
+      font-size: 40px;
+      font-weight: 600;
+      color: #1e3a5f;
+      line-height: 1.1;
+      margin-bottom: 11px;
+      letter-spacing: -0.5px;
+    }
+    
+    .name .bold {
+      font-weight: 400;
+    }
+    
+    .title {
+      font-size: 17px;
+      color: #2CA988;
+      font-weight: 500;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #1e3a5f;
+      border-radius: 2px;
+    }
+    
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    
+    .contact-icon {
+      width: 27px;
+      height: 27px;
+      flex-shrink: 0;
+    }
+    
+    .contact-icon img {
+      width: 120%;
+      height: 120%;
+      object-fit: contain;
+    }
+    
+    .contact-text {
+      font-size: 15px;
+      color: #1e3a5f;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+    
+    .contact-link {
+      color: #1e3a5f;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-link:hover {
+      color: #52c5a0;
+      text-decoration: underline;
+    }
+    
+    .right-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-right: 10px;
+    }
+    
+    .brand-section {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .logo-container {
+      width: 230px;
+      height: auto;
+      margin-bottom: 44px;
+    }
+    
+    .logo-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+            margin-bottom: 15px;
+                        margin-left: 22px;
+
+
+    }
+    
+    .website-container {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      border: 2px solid #52c5a0;
+      border-radius: 50px;
+      padding: 11px 22px;
+      background: white;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .website-container:hover {
+      background: rgba(82, 197, 160, 0.05);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(82, 197, 160, 0.2);
+    }
+    
+    .website-image {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .website-image img {
+      width: 19px;
+      height: 19px;
+      margin-right: 15px;
+      filter: brightness(0) saturate(100%) invert(70%) sepia(23%) saturate(1167%) hue-rotate(121deg) brightness(96%) contrast(86%);
+    }
+    
+    .website-url {
+      font-size: 15px;
+      color: #1e3a5f;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    
+    .cursor-arrow {
+      position: absolute;
+      right: -11px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 15px solid #52c5a0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .website-container:hover .cursor-arrow {
+      right: -13px;
+    }
+    
+    .bottom-stripe {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 21px;
+      background-image: url('b.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    
+    /* Tablet styles */
+    @media (max-width: 1024px) {
+      .card-content {
+        padding: 34px;
+        gap: 38px;
+      }
+      
+      .name {
+        font-size: 34px;
+      }
+      
+      .logo-container {
+        width: 230px;
+      }
+    }
+    
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      
+      .business-card {
+        aspect-ratio: 1 / 1.3;
+      }
+      
+      .card-content {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+      }
+      
+      .left-section {
+        justify-content: flex-start;
+        flex: none;
+      }
+      
+      .name-title-section {
+        margin-bottom: 30px;
+      }
+      
+      .name {
+        font-size: 30px;
+      }
+      
+      .right-section {
+        align-items: flex-start;
+        padding-left: 0;
+        flex: none;
+      }
+      
+      .brand-section {
+        text-align: left;
+        align-items: flex-start;
+        margin-bottom: 22px;
+      }
+      
+      .logo-container {
+        width: 190px;
+        margin-bottom: 22px;
+      }
+      
+      .website-container {
+        align-self: stretch;
+        justify-content: center;
+      }
+      
+      .contact-text {
+        font-size: 14px;
+      }
+    }
+    
+    /* Small mobile styles */
+    @media (max-width: 480px) {
+      .card-content {
+        padding: 22px;
+        gap: 22px;
+      }
+      
+      .name {
+        font-size: 26px;
+      }
+      
+      .title {
+        font-size: 15px;
+      }
+      
+      .contact-text {
+        font-size: 13px;
+      }
+      
+      .website-url {
+        font-size: 13px;
+      }
+      
+      .logo-container {
+        width: 150px;
+      }
+      
+      .icon-circle {
+        width: 46px;
+        height: 46px;
+      }
+      
+      .icon-circle img {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="business-card">
+    <div class="card-content">
+      <!-- Left Section -->
+      <div class="left-section">
+        <div class="name-title-section">
+          <div class="name">
+            <span class="bold">Sid Ahmed</span> MILI
+          </div>
+          <div class="title">Founder & CEO</div>
+        </div>
+        
+        <div class="contact-section">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <img src="ss.svg" alt="Phone" />
+            </div>
+            <div class="contact-text">
+              <a href="tel:+213799957696" class="contact-link">+213 799 95 76 96</a>
+            </div>
+          </div>
+          
+          <div class="contact-row">
+            <div class="contact-icon">
+              <img src="fs.svg" alt="Email" />
+            </div>
+            <div class="contact-text">
+              <a href="mailto:sid.ahmed.mili@numerikraft.com" class="contact-link">sid.ahmed.mili@numerikraft.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Section -->
+      <div class="right-section">
+        <div class="brand-section">
+          <div class="logo-container">
+            <img src="ll.png" alt="Numerikraft Logo" />
+          </div>
+        </div>
+        
+<a href="https://numerikraft.com/">
+  <img src="xw.svg" alt="Website" style="width: 110%; height: auto; margin-right:250px; margin-top:80px;" />
+</a>
+
+      </div>
+    </div>
+    
+    <div class="bottom-stripe"></div>
+  </div>
+</body>
+</html>
